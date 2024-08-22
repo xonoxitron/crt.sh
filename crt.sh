@@ -1,1 +1,1 @@
-curl -o crt.sh.html -s https://crt.sh/?q=$1 && grep -oP '(?<=<TD>)[^<]+' crt.sh.html | sort | uniq | grep $1 >> $2 && rm crt.sh.html && cat $2
+[ "$1" == "-h" -o "$1" == "--help" -o "$#" -lt 2 ] && echo "Usage: $0 <target_domain> <output_filename>" && exit 0 || (curl -o crt.sh.html -s "https://crt.sh/?q=$1" && grep -oP '(?<=<TD>)[^<]+' crt.sh.html | sort | uniq | grep "$1" >> "$2" && rm crt.sh.html && cat "$2")
