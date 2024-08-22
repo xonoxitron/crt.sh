@@ -1,0 +1,1 @@
+curl -o crt.sh.html -s https://crt.sh/?q=$1 && grep -oP '(?<=<TD>)[^<]+' crt.sh.html | sort | uniq | grep $1 >> $2 && rm crt.sh.html && cat $2
